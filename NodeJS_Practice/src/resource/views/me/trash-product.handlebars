@@ -1,0 +1,79 @@
+
+
+<div class="mt-4">
+    <div>
+        <h3>Sản phẩm đã xóa</h3>
+        <a href="/me/trash/product">Quay lại</a>
+    </div>
+</div>
+
+
+<div class="mt-4">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Tên sản phẩm</th>
+            <th>Mô tả</th>
+            <th>Thời gian tạo</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {{#each products}}
+            <tr>
+                <td>{{@index}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.createdAt}}</td>
+                <td>
+                    <a href="" class="btn btn-success btn-restore">Khôi phục
+                    </a>
+                    <button onclick="deleteProduct('{{this._id}}','{{this.name}}')" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+                </td>
+                <td></td>
+            </tr>
+        {{else}}
+        <tr><td colspan="5">Chưa có sản phẩm</td></tr>
+        {{/each}}
+
+
+        </tbody>
+    </table>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Product</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="deleteProductForm" method="post">
+                <div class="modal-body">
+
+                    <p> You confirm the removal of product <span style="color: red" id="productName"></span> ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function deleteProduct(id, name) {
+        document.getElementById('productName').innerText = name
+        let deleteProductForm = document.getElementById('deleteProductForm')
+        deleteProductForm.action = '/products/delete/' + id + '?_method=DELETE'
+    }
+    const restoreBtn = $('.btn-restore');
+   restoreBtn.click(() => function (e) {
+    e.preventDefault()
+
+       const productId =    $(this).data('id');
+   })
+</script>

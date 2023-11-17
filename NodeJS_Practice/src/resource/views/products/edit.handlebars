@@ -1,0 +1,162 @@
+
+
+<style>
+    .card {
+        border: none;
+        padding: 20px;
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 20px;
+    }
+
+    .btn-danger {
+        color: black;
+        background-color: #ffafda;
+        border-color: #ffafda;
+    }
+
+    body {
+        background-image: url("https://wallpapers.com/images/hd/english-2000-x-1333-wallpaper-di44s6r4zq9mj991.jpg");
+    }
+
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+    body {
+        background-color: #eee;
+        font-family: "Poppins", sans-serif;
+        font-weight: 300
+    }
+
+    .height {
+        height: 100vh
+    }
+
+    .card {
+        border: none;
+        padding: 20px;
+        position: relative
+    }
+
+    .img-logo {
+        position: absolute;
+        left: 54%;
+        transform: translateX(-50%);
+        top: -48px
+    }
+
+    .inputs span {
+        font-size: 14px;
+        font-weight: 500
+    }
+
+    .inputs input {
+        font-size: 13px;
+        height: 44px
+    }
+
+    .inputs input:focus {
+        border-color: #2c1e8e;
+        box-shadow: none
+    }
+
+    .btn-group {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .integration {
+        font-size: 15px;
+        padding: 0.375rem 0.75rem;
+        border: 1px solid #212529;
+        border-radius: 0.25rem;
+        background-color: #b366b3;
+    }
+</style>
+
+
+<div class="container mt-5 mb-5">
+    <div class="row height d-flex justify-content-center align-items-center">
+        <div class="col-md-6">
+            <div class="card px-5 py-4">
+
+                <br>
+                <div style="text-align: center ;color: #2f5691">
+                    <div>
+                        <h1>UPDATE COURSE</h1>
+                    </div>
+                </div>
+                <form method="POST" action="/products/{{product._id}}?_method=PUT">
+
+                    <div class="mt-4 inputs"><span>Name</span>
+                        <input type="text" class="form-control"  name="name" value="{{product.name}}" />
+                        {{#if error.name}}
+                            <span style="color:red">{{error.name}}</span>
+                        {{/if}}
+                    </div>
+
+                    <div class="mt-2 inputs"><span>Description</span>
+                        <input type="text" name="description" class="form-control" value="{{product.description}}"/>
+                        {{#if error.description}}
+                            <span style="color:red">{{error.description}}</span>
+                        {{/if}}
+                    </div>
+
+
+                    <div class="mt-2 inputs"><span>Image</span>
+                        <input type="text" class="form-control"  name="image"  value="{{product.image}}" />
+                        {{#if error.image}}
+                            <span style="color:red">{{error.image}}</span>
+                        {{/if}}
+                    </div>
+                    <div class="mt-2 inputs"><span>Video Id</span>
+                        <input class="form-control" type="text" name="videoId" value="{{product.videoId}}" >
+                        {{#if error.videoId}}
+                            <span style="color:red">{{error.videoId}}</span>
+                        {{/if}}
+                    </div>
+
+
+                    <div class="text-center mt-4 btn-group">
+                        <a>
+                            <button type="button" class="btn btn-dark"><b> Back</b></button>
+                        </a>
+                        <button type="submit" class=" integration">
+                            <b>Add</b>
+                        </button>
+
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!--<div class="mt-4">-->
+<!--    <h3>Cập nhập sản phẩm</h3>-->
+
+<!--    <form method="POST" action="/products/{{product._id}}?_method=PUT">-->
+<!--        <div class="mb-3">-->
+<!--            <label for="exampleInputEmail1" class="form-label">Tên đồ uống</label>-->
+<!--            <input type="text" name="name" class="form-control"  value="{{product.name}}" id="exampleInputEmail1" aria-describedby="emailHelp">-->
+<!--        </div>-->
+<!--        <div class="mb-3">-->
+<!--            <label for="exampleInputPassword1" class="form-label">Mô tả</label>-->
+<!--            <input type="text" name="description" class="form-control"  value="{{product.description}}" id="exampleInputPassword1">-->
+<!--        </div>-->
+<!--        <div class="mb-3">-->
+<!--            <label for="exampleInputPassword1" class="form-label">Ảnh</label>-->
+<!--            <input type="file" name="image" class="form-control"  value="{{product.image}}" id="exampleInputPassword1">-->
+<!--        </div>-->
+<!--        <div class="mb-3">-->
+<!--            <label for="exampleInputPassword1" class="form-label">Video Id</label>-->
+<!--            <input type="text" name="videoId" class="form-control"  value="{{product.videoId}}" id="exampleInputPassword1">-->
+<!--        </div>-->
+<!--&lt;!&ndash;        <div class="mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label for="exampleInputPassword1" class="form-label">Video Id</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="text" name="image" class="form-control"  value="{{product.image}}" id="exampleInputPassword1">&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        <button type="submit" class="btn btn-success">Submit</button>-->
+<!--    </form>-->
+<!--</div>-->

@@ -1,0 +1,137 @@
+
+
+
+<div class="mt-4">
+    <div>
+        <h1 style="text-align: center">My Course</h1>
+<!--        <a href="/me/trash/product">Thùng rác</a>-->
+    </div>
+</div>
+
+
+
+
+
+<div class="mt-4" style="padding : 50px 50px">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name Course</th>
+            <th>Description</th>
+<!--            <th>Thời gian tạo</th>-->
+            <th>Function</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {{#each products}}
+            <tr>
+                <td>{{ sum @index 1 }}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.description}}</td>
+<!--                <td>{{this.createdAt}}</td>-->
+                <td><a href="/products/{{this._id}}/edit" class="btn btn-success">Update</a>
+                    <button onclick="deleteProduct('{{this._id}}','{{this.name}}')" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+                </td>
+                <td></td>
+            </tr>
+        {{else}}
+        <tr><td colspan="5">There are no courses yet</td></tr>
+        {{/each}}
+
+
+        </tbody>
+    </table>
+
+</div>
+<nav aria-label="...">
+    <ul class="pagination">
+        <li class="page-item disabled">
+            <span class="page-link">Previous</span>
+        </li>
+        <li class="page-item"><a class="page-link" href="/me/stored/product/1">1</a></li>
+        <li class="page-item active">
+      <span class="page-link">
+        2
+        <span class="sr-only">(current)</span>
+      </span>
+        </li>
+        <li class="page-item"><a class="page-link" href="/me/stored/product/2">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
+</nav>
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Course</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="deleteProductForm" method="post">
+                <div class="modal-body">
+
+                    <p> You confirm the removal of course <span style="color: red" id="productName"></span> ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function deleteProduct(id, name) {
+        document.getElementById('productName').innerText = name
+        let deleteProductForm = document.getElementById('deleteProductForm')
+        deleteProductForm.action = '/products/delete/' + id + '?_method=DELETE'
+    }
+</script>
+
+
+<!--<nav aria-label="Page navigation example">-->
+<!--    <ul class="pagination">-->
+<!--        <li class="page-item">-->
+<!--            <a class="page-link" href="#" aria-label="Previous">-->
+<!--                <span aria-hidden="true">&laquo;</span>-->
+<!--                <span class="sr-only">Previous</span>-->
+<!--            </a>-->
+<!--        </li>-->
+<!--        <li class="page-item"><a class="page-link" href="/me/stored/product/1">1</a></li>-->
+<!--        <li class="page-item"><a class="page-link" href="/me/stored/product/1">2</a></li>-->
+<!--        <li class="page-item">-->
+<!--            <a class="page-link" href="#" aria-label="Next">-->
+<!--                <span aria-hidden="true">&raquo;</span>-->
+<!--                <span class="sr-only">Next</span>-->
+<!--            </a>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--</nav>-->
+
+<!--<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>-->
+
+
+
+<!--<script>-->
+<!--    let inputId = document.getElementById("inputId");-->
+<!--    if (inputId && inputId.innerText != null) {-->
+<!--        swal({-->
+<!--            title: "SUCCESSFULLY",-->
+<!--            text: inputId.innerText,-->
+<!--            icon: "success",-->
+<!--            button: "OK",-->
+<!--        }).then((idOk) => {-->
+<!--            if (idOk) {-->
+<!--                inputId.innerText = '';-->
+<!--            }-->
+<!--        });-->
+<!--    }-->
+<!--</script>-->

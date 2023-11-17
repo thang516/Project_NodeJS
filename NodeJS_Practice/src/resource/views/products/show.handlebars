@@ -1,0 +1,91 @@
+<style>
+    .btn-register{
+        background-color:     #b366b3;
+        border: none;
+        height: 7vh;
+        width: 10vw;
+        border-radius: 20px;
+        font-size: 18px;
+        font-weight: 700;
+
+    }
+    .logo-css{
+        display: flex;
+        justify-content: center;
+        padding: 15px 0px;
+
+    }
+    .logo-contain{
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        background-color: whitesmoke;
+
+    }
+    .row-container{
+        width: 100%;
+        display: flex;
+    }
+    .div-btn{
+        display: flex;
+        justify-content: center;
+        padding: 20px 0;
+        border-bottom: 10px white solid;
+    }
+    .review{
+        display: flex;
+        flex-direction: column;
+        padding: 20px 20px;
+    }
+    .review-img{
+        padding: 20px 20px;
+        height: auto;
+        width: 50%;
+        margin: 0 auto;
+    }
+    .review-content{
+        padding: 10px 50px;
+    }
+    .title-name{
+        display: flex;
+        justify-content: center;
+        font-size: 30px;
+        font-weight: 700;
+    }
+    .video-contain{
+        width: 70%;
+        padding: 30px 30px;
+    }
+</style>
+<div class="">
+    <div class=" row-container">
+
+        <div class="video-contain">
+            <h2 class="title-name">{{product.name}}</h2>
+            <iframe width="900" height="600" src="https://www.youtube.com/embed/{{product.videoId}}?si=lhK5xxYvxGM9b1dZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <p>{{product.description}}</p>
+        </div>
+
+        <div></div>
+        <div class="logo-contain">
+            <div class="div-btn"><button  class="btn-register">Register now</button></div>
+            <div class="logo-css">
+                <img style="height: auto; width: 40%" src="https://on-the-move.org/sites/default/files/news/2023-06/BRITISH-COUNCIL_logo.png" alt="">
+            </div>
+            <div class="review">
+                <img  class="review-img" src="https://www.britishcouncil.vn/sites/default/files/styles/bc-square-270x270/public/tmt-resized_0.png?itok=ScVHLyEc" alt="">
+                <p class="review-content">'Sau khi hoàn thành khóa học myClass trong một năm, bản thân em thấy đã có thể tự tin bước vào quá trình luyện thi, em tiếp tục đăng ký khóa luyện thi IELTS Premium. Sau khi thi IELTS và đạt được số điểm 8.0, em đã tự tin hơn rất nhiều khi giao tiếp bằng tiếng Anh và em cũng đã trang bị cho mình đủ sự tự tin để sẵn sàng cho con đường du học nhiều thử thách phía trước.'<b> Tô Mạnh Tùng, học viên khóa myClass và IELTS Premium - IELTS 8.0</b></p>
+            </div>
+
+<!--            <div class="addvest">-->
+<!--                <h4>Global English expert</h4>-->
+<!--                <div>8000 students each year</div>-->
+<!--                <div>100 famous English experts</div>-->
+<!--                <div>9 teaching centers</div>-->
+<!--            </div>-->
+        </div>
+
+
+
+    </div>
+</div>

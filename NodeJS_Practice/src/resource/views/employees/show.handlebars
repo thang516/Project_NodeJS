@@ -1,0 +1,109 @@
+<style>
+
+    .form-search form {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        padding-top: 20px;
+    }
+
+    .form-control {
+        width: 15%
+    }
+</style>
+
+
+<div class="form-search">
+    <form action="/em/search">
+        <input type="text" name="name" class="form-control" placeholder="Name">
+        <input type="number" name="phone" class="form-control" placeholder="phone">
+        <select name="name_type" class="form-control">
+            <option value="">Type Employee</option>
+            <option value="staff">Staff</option>
+            <option value="hr">Hr</option>
+            <option value="lead">Lead</option>
+
+        </select>
+
+        <button class="btn btn-success" type="submit">Search</button>
+    </form>
+</div>
+
+
+<div>
+    <h1 style="text-align: center; padding: 20px 0px">Employee</h1>
+</div>
+
+
+<div>
+    <table class="table table-striped container">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Age</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <!--            <th>Image</th>-->
+            <th>Email</th>
+            <th>Type Employee</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each products}}
+            <tr>
+                <td>{{ sum @index  1}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.position}}</td>
+                <td>{{this.age}}</td>
+                <td>{{this.phone}}</td>
+                <td>{{this.address}}</td>
+                <!--                <td>{{this.image}}</td>-->
+                <td>{{this.email}}</td>
+                <td>{{this.name_type}}</td>
+                <td><a href="employee/{{this.id}}/edit" class="btn btn-success">Update</a>
+                    <button onclick="deleteProduct('{{this.id}}','{{this.name}}')" class="btn btn-danger"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal">Delete
+                    </button>
+                </td>
+            </tr>
+        {{else}}
+            <tr>
+                <td colspan="5">No data employee</td>
+            </tr>
+        {{/each}}
+
+
+        </tbody>
+    </table>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Product</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="deleteProductForm" method="post">
+                <div class="modal-body">
+
+                    <p> You confirm the removal of product <span style="color: red" id="employeeName"></span> ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function deleteProduct(id, name) {
+        document.getElementById('employeeName').innerText = name
+        let deleteProductForm = document.getElementById('deleteProductForm')
+        deleteProductForm.action = '/em/delete/' + id + '?_method=DELETE'
+    }
+</script>
